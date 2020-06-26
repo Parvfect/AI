@@ -12,3 +12,5 @@ The bot is as good as the dataset though and its very random. Still want to use 
 24/6/20 - Some deep learning introduction and just some starter programs to understanding how a neural net works. Tried to make a cat dog one but gave up when the encoding differed and yeah, kinda lazy.
 
 25/6/20 - Made a first number ocr using a MNIST dataset and Pytorch. Everything was done for me though, so looking forward to learning more. - refer to digitocr.py
+
+26/6/20 - Yeah the abandoned catdog one was made. Its got a good accuracy on like 2 epochs so that's cool. Gonna learn how to switch to GPU now. refer - catdog.py
