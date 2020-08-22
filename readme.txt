@@ -6,6 +6,8 @@ I am an absolute beginner though, so gonna fall and get back up and keep learnin
 
 Updates
 
+22/8/20 - So I have been spending some times refining my basics (CS61A - my friend is in Berkeley lmao), and didn't have much time to do ml. I am halfway through that but I really wanted to do ML so I decided to start doing the O'Reily book and it's not bad. So I'm on the first project of the housing model. It's quite in depth and helping me connect some dots. This is getting exciting.
+
 2/7/20 - Learning tensorflow now, the same dataset I suppose.
 
 28/6/20 - So I learnt how to switch to the gpu but will have to call off learning for a few days to transfer out data from my computer so I can boot it to Ubuntu.
