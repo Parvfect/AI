@@ -1,17 +1,13 @@
 
+import math
 
+def sigmoid(x):
+    return (1/(1 + math.exp(- x)))
 
-class Activation:
-
-    def sigmoid(x):
-        return (1/(1 + e ^ (- x)))
+def regression(expected, actual):
     
-class Loss:
+    sum = 0
+    for _ in range(len(expected)):
+        sum += math.sqrt((actual - expected) ^ 2)
     
-    def regression(expected, actual):
-        
-        sum = 0
-        for i in range(len(expected)):
-            sum += sqrt((actual - expected) ^ 2)
-        
-        return sum/len(actual)
+    return sum/len(actual)
