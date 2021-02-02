@@ -7,6 +7,7 @@ for each layer and each layer is connected to every single node in the other arr
 
 import random
 from functions import *
+import numpy as np
 
 class Net:
     
@@ -69,7 +70,7 @@ class Node:
     #Make sure that inputs is an array of Nodes, would have been cooler in java
     def __init__(self, n_weights, first):
         
-        self.weights = []
+        self.weights = np.array()
         #initial state is off
         self.state = 0
         self.first = first
