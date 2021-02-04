@@ -6,6 +6,8 @@ I am an absolute beginner though, so gonna fall and get back up and keep learnin
 
 Updates
 
+3/02/21 - Well forward pass is done, but I mean that is really the easy part of it. Gonna have to crack my knuckles and start the actual part of it now. 
+
 17/01/21 - It has been a while, but I think I am getting my mojo back. Started working on creating my own neural net for better understanding. Just done a basic class structure, gonna actually make it in a while. Let's see.
 
 25/10/20 - Shut up okay. I didn't update. I did some part of the MIT deep learning course (mostly theory) since I am in college now and I don't have a GPU for the labs (rip). But my next idea is to create a deep model for this dataset of allen poe's short stories. So yeah that's what I am going to do. Let's have fun watching me fail.
