@@ -6,6 +6,8 @@ I am an absolute beginner though, so gonna fall and get back up and keep learnin
 
 Updates
 
+11/04/21 - Convolutional nets - problems here and there - and some basic transfer learning paradigms (which didn't really work)
+
 3/02/21 - Well forward pass is done, but I mean that is really the easy part of it. Gonna have to crack my knuckles and start the actual part of it now. 
 
 17/01/21 - It has been a while, but I think I am getting my mojo back. Started working on creating my own neural net for better understanding. Just done a basic class structure, gonna actually make it in a while. Let's see.
