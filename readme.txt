@@ -1,6 +1,6 @@
 Hey welcome.
 
-The goal is to create the best chat agent in the world.
+The goal is to create the first actual artifical intelligence.
 I am an absolute beginner though, so gonna fall and get back up and keep learning. 
 
 
