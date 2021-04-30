@@ -6,6 +6,8 @@ I am an absolute beginner though, so gonna fall and get back up and keep learnin
 
 Updates
 
+30/04/21 - Still doing some convolutional nets. Having major issues with Tensorflow and I don't really want to downgrade - so I might just stick to Pytorch - they seem to give more control and be more pythonic in general
+
 11/04/21 - Convolutional nets - problems here and there - and some basic transfer learning paradigms (which didn't really work)
 
 3/02/21 - Well forward pass is done, but I mean that is really the easy part of it. Gonna have to crack my knuckles and start the actual part of it now. 
