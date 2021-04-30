@@ -6,7 +6,7 @@ I am an absolute beginner though, so gonna fall and get back up and keep learnin
 
 Updates
 
-30/04/21 - Still doing some convolutional nets. Having major issues with Tensorflow and I don't really want to downgrade - so I might just stick to Pytorch - they seem to give more control and be more pythonic in general
+30/04/21 - Still doing some convolutional nets. Having major issues with Tensorflow and I don't really want to downgrade - so I might just stick to Pytorch - they seem to give more control and be more pythonic in general - also did you guys check out Jarvis - wtf I really have to do it. My first initialization failed though lmao
 
 11/04/21 - Convolutional nets - problems here and there - and some basic transfer learning paradigms (which didn't really work)
 
