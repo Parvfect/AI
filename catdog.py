@@ -5,6 +5,14 @@ from tqdm import tqdm
 
 REBUILD_DATA = False
 
+if torch.cuda.is_available():
+    device = torch.device("cuda:0")  # you can continue going on here, like cuda:1 cuda:2....etc. 
+    print("Running on the GPU")
+
+else:
+    device = torch.device("cpu")
+    print("Running on the CPU")
+
 class DogVCat():
     IMG_SIZE = 50
     #We need a uniform image size in input 
@@ -121,6 +129,28 @@ for epoch in range(EPOCHS):
 
 correct = 0
 total = 0 
+EPOCHS = 3
+
+def train(net):
+    optimizer = optim.Adam(net.parameters(), lr=0.001)
+    BATCH_SIZE = 100
+    EPOCHS = 3
+    for epoch in range(EPOCHS):
+        for i in range(0, len(train_X), BATCH_SIZE): # from 0, to the len of x, stepping BATCH_SIZE at a time. [:50] ..for now just to dev
+            #print(f"{i}:{i+BATCH_SIZE}")
+            batch_X = train_X[i:i+BATCH_SIZE].view(-1, 1, 50, 50)
+            batch_y = train_y[i:i+BATCH_SIZE]
+
+            batch_X, batch_y = batch_X.to(device), batch_y.to(device)
+            net.zero_grad()
+
+            optimizer.zero_grad()   # zero the gradient buffers
+            outputs = net(batch_X)
+            loss = loss_function(outputs, batch_y)
+            loss.backward()
+            optimizer.step()    # Does the update
+
+        print(f"Epoch: {epoch}. Loss: {loss}")
 
 with torch.no_grad():
     for i in tqdm(range(len(test_X))):

@@ -167,6 +167,7 @@ if REBUILD_MODEL:
     model = net
 else:
     model = torch.load("/home/parvfect/Documents/AI/models/catdog")
+    
 
 test(model)
 

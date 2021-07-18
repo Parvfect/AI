@@ -1,0 +1,5 @@
+**/models/
+**/data/
+**/datasets/
+**/.ipynb_checkpoints
+*.csv

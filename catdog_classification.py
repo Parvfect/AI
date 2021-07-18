@@ -12,8 +12,16 @@ from sklearn.model_selection import train_test_split
 
 """ To do - Transfer learning to use this to identify some other image features"""
 
-REBUILD_DATA = False
-REBUILD_MODEL = False
+REBUILD_DATA = True
+REBUILD_MODEL = True
+
+if torch.cuda.is_available():
+    device = torch.device("cuda:0")  # you can continue going on here, like cuda:1 cuda:2....etc. 
+    print("Running on the GPU")
+
+else:
+    device = torch.device("cpu")
+    print("Running on the CPU")
 
 # Preprocessing step can take a lot of time - you want to run it as few as possible
 
@@ -22,8 +30,8 @@ class DogsvCats():
 
     # Images needs to be of the same shape
     img_size = 50
-    cats = "/home/parv/Documents/machine_learning/catdog/PetImages/Cat"
-    dogs = "/home/parv/Documents/machine_learning/catdog/PetImages/Dog"
+    cats = "/home/parvfect/Documents/AI/catdog/PetImages/Cat"
+    dogs = "/home/parvfect/Documents/AI/catdog/PetImages/Dog"
     Labels = {cats:0, dogs:1}
 
     training_data = []
@@ -131,42 +139,52 @@ X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.1)
 batch_size = 100
 epochs = 2
 
-def train():
-    for epoch in range(epochs):
-        for i in tqdm(range(0, len(X_train), batch_size)):
-            batch_X = X_train[i: i+batch_size].view(-1,1,50,50)
-            batch_y = y_train[i: i+batch_size]
+EPOCHS = 3
 
+def train(net):
+    optimizer = optim.Adam(net.parameters(), lr=0.001)
+    BATCH_SIZE = 100
+    EPOCHS = 3
+    for epoch in range(EPOCHS):
+        for i in range(0, len(X_train), BATCH_SIZE): # from 0, to the len of x, stepping BATCH_SIZE at a time. [:50] ..for now just to dev
+            #print(f"{i}:{i+BATCH_SIZE}")
+            batch_X = X_train[i:i+BATCH_SIZE].view(-1, 1, 50, 50)
+            batch_y = y_train[i:i+BATCH_SIZE]
+
+            batch_X, batch_y = batch_X.to(device), batch_y.to(device)
             net.zero_grad()
 
+            optimizer.zero_grad()   # zero the gradient buffers
             outputs = net(batch_X)
             loss = loss_function(outputs, batch_y)
             loss.backward()
-            optimizer.step()
-        
-        print(f"Epoch: {epoch}. Loss: {loss}")
-    
-    torch.save(net, "/home/parv/Documents/machine_learning/models/catdog")
+            optimizer.step()    # Does the update
 
-def test():
+        print(f"Epoch: {epoch}. Loss: {loss}")
+
+    torch.save(net, "/home/parvfect/Documents/machine_learning/models/catdog")
+
+def test(net):
     correct = 0
     total = 0
-    with torch.no_grad():
-        for i in tqdm(range(len(X_test))):
-            real_class = torch.argmax(y_test[i])
-            net_out = model(X_test[i].view(-1, 1, 50, 50))[0]  # returns a list, 
-            predicted_class = torch.argmax(net_out)
+    for i in tqdm(range(0, len(X_test), BATCH_SIZE)):
 
-            if predicted_class == real_class:
+        batch_X = X_test[i:i+BATCH_SIZE].view(-1, 1, 50, 50).to(device)
+        batch_y = y_test[i:i+BATCH_SIZE].to(device)
+        batch_out = net(batch_X)
+
+        out_maxes = [torch.argmax(i) for i in batch_out]
+        target_maxes = [torch.argmax(i) for i in batch_y]
+        for i,j in zip(out_maxes, target_maxes):
+            if i == j:
                 correct += 1
             total += 1
-
     print("Accuracy: ", round(correct/total, 3))
 
 if REBUILD_MODEL:
-    train()
+    train(net)
     model = net
 else:
-    model = torch.load("/home/parv/Documents/machine_learning/models/catdog")
+    model = torch.load("/home/parvfect/Documents/machine_learning/models/catdog")
 
-test()
+test(model)
